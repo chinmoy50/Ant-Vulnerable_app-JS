@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="vulnerable_app" basedir="." default="build">
+
+    <!-- Set properties for directories -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+
+    <!-- Initialize build directory -->
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <!-- Clean build directories -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <!-- Copy source files to build -->
+    <target name="copy-sources" depends="init">
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}"/>
+        </copy>
+    </target>
+
+    <!-- Run JavaScript build tasks (like bundling or minification) -->
+    <target name="build" depends="copy-sources">
+        <echo message="Building JavaScript application..."/>
+        <!-- You can add your build tasks like bundling or minification here -->
+        <!-- Example: <exec executable="npx" failonerror="true">
+                        <arg value="webpack"/>
+                    </exec> -->
+    </target>
+
+    <!-- Deploy the build (this could be uploading to a server) -->
+    <target name="deploy" depends="build">
+        <echo message="Deploying application..."/>
+        <!-- You can add deployment steps like uploading files to a server -->
+    </target>
+
+</project>
