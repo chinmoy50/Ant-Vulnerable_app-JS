@@ -25,7 +25,7 @@ jobs:
       - name: Perform SAST Scan
         id: sast
         run: |
-          RESPONSE=$(curl -X POST             -H "Client-ID: ${{ secrets.INTRUCEPT_CLIENT_ID }}"             -H "Client-Secret: ${{ secrets.INTRUCEPT_CLIENT_SECRET }}"             -F "projectZipFile=@project.zip"             -F "applicationId=${{ secrets.INTRUCEPT_APPLICATION_ID }}"             -F "scanName=Ant Vulnrable App SAST Scan - ${{ github.sha }}"             -F "language=kotlin"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sast-scans)
+          RESPONSE=$(curl -X POST             -H "Client-ID: ${{ secrets.INTRUCEPT_CLIENT_ID }}"             -H "Client-Secret: ${{ secrets.INTRUCEPT_CLIENT_SECRET }}"             -F "projectZipFile=@project.zip"             -F "applicationId=${{ secrets.INTRUCEPT_APPLICATION_ID }}"             -F "scanName=Vulnrable-App-JS SAST ReScan - ${{ github.sha }}"             -F "language=JavaScript"             https://appsecops-api.intruceptlabs.com/api/v1/integrations/sast-scans)
           
           # Check for error in response.
           ERROR=$(echo "$RESPONSE" | jq -r '.error // empty')
